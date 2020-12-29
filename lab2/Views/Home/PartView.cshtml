@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model lab2.Models.Part
+<h2>Комплектующая</h2>
+<img src="/@Model.img" />
+<div class="display-label"><b>Название</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Name)
+</div>
+<div class="display-label"><b>Вид</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Kind)
+</div>
+<div class="display-label"><b>Стоимость</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Price)
+</div>

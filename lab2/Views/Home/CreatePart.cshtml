@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Добавление комплектующих";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model lab2.Models.Part
+
+<h2>Добавление новой комплектующей</h2>
+
+@using (Html.BeginForm("CreatePart", "Home", FormMethod.Post))
+{
+<fieldset>
+    <legend>Комплектующая</legend>
+
+    <p>
+        Название комплектующей <br />
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Магазин <br />
+        @Html.DropDownListFor(model => model.ShopId, ViewBag.Shops as SelectList)
+    </p>
+
+    <p>
+        Вид <br />
+        @Html.DropDownListFor(model => model.Kind, ViewBag.Kinds as SelectList)
+    </p>
+    <p>
+        Цена <br />
+        @Html.EditorFor(model => model.Price)
+    </p>
+    <p>
+        Картинка <br />
+        @Html.EditorFor(model => model.img)
+    </p>
+    <p>
+        <input type="submit" value="Добавить комплектующую" />
+    </p>
+</fieldset>
+}
+<div>
+    @Html.ActionLink("К списку склада", "Index")
+</div>

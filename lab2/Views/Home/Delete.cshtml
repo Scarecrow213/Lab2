@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model lab2.Models.Part
+<h2>Удаление комплектующей</h2>
+<dl>
+    <dt>Название</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>Магазин</dt>
+    <dd>
+        @ViewBag.Shop
+    </dd>
+
+    <dt>Вид</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Kind)
+    </dd>
+
+    <dt>Цена</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Price)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+<input type="submit" value="Удалить" />
+}

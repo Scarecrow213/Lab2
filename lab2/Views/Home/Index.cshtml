@@ -1,0 +1,62 @@
+﻿@model lab2.Models.PartListViewModel
+@{
+    ViewBag.Title = "Склад";
+}
+<div>
+    <h2>Список склада</h2>
+    <p>
+        @Html.ActionLink("Добавить комплектующую", "CreatePart")
+    </p>
+    <p>
+        @Html.ActionLink("Добавить магазин", "CreateShop")
+    </p>
+    <p>
+        @Html.ActionLink("Удалить магазин", "Delete_shop")
+    </p>
+
+    <form method="get">
+        <div class="form-inline">
+            <label class="control-label"> Магазин: </label>
+            @Html.DropDownList("shop", Model.Shops as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+            <label class="control-label">Вид: </label>
+            @Html.DropDownList("kind", Model.Kind as SelectList,
+                     htmlAttributes: new { @class = "form-control" })
+
+
+            <input type="submit" value="Фильтр" class="btn btn-default" />
+        </div>
+    </form>
+
+    <table>
+        <tr class="header">
+            <td><p>Изображение</p></td>
+            <td><p>Название</p></td>
+            <td><p>Магазин</p></td>
+            <td><p>Вид</p></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.Parts)
+        {
+            <tr>
+                <td>
+                    <img src="/@item.img" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shop.NameShop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kind)
+                </td>
+                <td>
+                    @Html.ActionLink("Просмотр", "PartView", new { id = item.Id }) |
+                    @Html.ActionLink("Редактировать", "EditPart", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
